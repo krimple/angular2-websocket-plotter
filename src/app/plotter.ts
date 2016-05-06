@@ -7,11 +7,11 @@ import {TimeSeries} from "smoothie";
 @Component({
   selector: 'plotter',
   inputs: [
-    'dataSet', 'width', 'height', 'id'
+    'dataSet', 'width', 'height'
   ],
   template: `
     <h3>Plot</h3>
-    <canvas id="{{id}}" width="{{width}}" height="{{height}}"></canvas>
+    <canvas width="{{width}}" height="{{height}}"></canvas>
   `
 })
 export class Plotter implements OnInit, OnChanges {
