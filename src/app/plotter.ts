@@ -31,8 +31,6 @@ export class Plotter implements OnInit, OnChanges {
     this.sineLine = new TimeSeries();
     this.chart.addTimeSeries(this.sineLine);
     this.chart.streamTo(this.element.nativeElement.getElementsByTagName('canvas')[0]);
-    console.log(`initialized plotter with id: ${this.id}, 
-                 width: ${this.width}, height: ${this.height}, dataSet: ${this.incomingData$}`);
    }
 
    ngOnChanges(data) {
