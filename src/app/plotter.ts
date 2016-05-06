@@ -21,7 +21,6 @@ export class Plotter implements OnInit, OnChanges {
   @Input() incomingData$: Array<string>;
   chart: any;
   sineLine: any;
-  data: string = "";
 
   constructor(private element: ElementRef, private ngZone: NgZone) {
   }
@@ -30,7 +29,8 @@ export class Plotter implements OnInit, OnChanges {
     this.chart = new SmoothieChart();
     this.sineLine = new TimeSeries();
     this.chart.addTimeSeries(this.sineLine);
-    this.chart.streamTo(this.element.nativeElement.getElementsByTagName('canvas')[0]);
+    this.chart.streamTo(
+        this.element.nativeElement.getElementsByTagName('canvas')[0]);
    }
 
    ngOnChanges(data) {

@@ -11,8 +11,8 @@ import {ReplaySubject} from 'rxjs/Rx';
   styleUrls: ['angular-websockets-demo.component.css'],
   providers: [SineWaveDataService],
   template: `
-    <plotter id="myPlotter"
-          width="900"
+    <plotter
+         width="900"
          height="100"
          [incomingData$]="incomingData$ | async"></plotter>
 `,
@@ -24,18 +24,5 @@ export class AngularWebsocketsDemoAppComponent {
 
   constructor(private dataService: SineWaveDataService) {
     this.incomingData$ = dataService.observableSineWave(0.15, 1);
-  }
-
-  ngOnInit() {
-    this.incomingData$.subscribe(
-        (dataPoint) => {
-            ;
-        },
-        (error) => {
-            console.error(error);
-        },
-        () => {
-            console.log('socket complete');
-        });
   }
 }
