@@ -12,8 +12,6 @@ import {TimeSeries} from "smoothie";
   template: `
     <h3>Plot</h3>
     <canvas id="{{id}}" width="{{width}}" height="{{height}}"></canvas>
-    <h3>Type in the text area</h3>
-    {{ data }}
   `
 })
 export class Plotter implements OnInit, OnChanges {
