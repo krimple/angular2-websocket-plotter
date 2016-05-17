@@ -38,7 +38,7 @@
 
         var connection = request.accept('sinedata', request.origin);
 
-        observableSineWave(this, .1, 10);
+        observableSineWave(this, .1, 20);
 
         connection.on('message', function(message) {
             connection.sendUTF(message.utf8Data);
@@ -54,11 +54,15 @@
         console.log('Example app listening on port 3000!');
     });
 
-    function observableSineWave(serverSocket, increment, period) {
+    function deg2rad(val) {
+      return val * 0.0174533;
+    }
+
+    function observableSineWave(serverSocket, period) {
         let waveVal = 0;
         setInterval(function() {
-            waveVal = waveVal == period ? 0 : waveVal + increment;
-            serverSocket.broadcast(JSON.stringify({ value: Math.sin(waveVal) }));
+            waveVal = waveVal == 360 ? 0 : waveVal + 0.1;
+            serverSocket.broadcast(JSON.stringify({ value: Math.sin(deg2rad(waveVal)) }));
         }, period);
     }
 
