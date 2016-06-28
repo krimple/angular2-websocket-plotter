@@ -14,15 +14,15 @@ import {ReplaySubject} from 'rxjs/Rx';
     <plotter
          width="900"
          height="100"
-         [incomingData$]="incomingData$ | async"></plotter>
+         [incomingData]="incomingData | async"></plotter>
 `,
   directives: [Plotter]
 })
 export class AngularWebsocketsDemoAppComponent {
   message: string;
-  incomingData$: ReplaySubject<string>;
+  incomingData: ReplaySubject<string>;
 
   constructor(private dataService: SineWaveDataService) {
-    this.incomingData$ = dataService.observableSineWave(0.15, 1);
+    this.incomingData = dataService.observableSineWave(0.05, 1);
   }
 }

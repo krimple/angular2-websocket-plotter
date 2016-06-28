@@ -18,7 +18,7 @@ export class Plotter implements OnInit, OnChanges {
   @Input() id: string;
   @Input() width: number;
   @Input() height: number;
-  @Input() incomingData$: Array<string>;
+  @Input() incomingData: Array<string>;
   chart: any;
   sineLine: any;
 
@@ -34,11 +34,11 @@ export class Plotter implements OnInit, OnChanges {
    }
 
    ngOnChanges(data) {
-       if (data.incomingData$) {
-           if (data.incomingData$.currentValue) {
+       if (data && data.incomingData) {
+           if (data.incomingData.currentValue) {
                this.ngZone.runOutsideAngular(() => {
                  this.sineLine.append(new Date().getTime(),
-                    JSON.parse(data.incomingData$.currentValue).value);
+                    JSON.parse(data.incomingData.currentValue).value);
                });
            }
        }

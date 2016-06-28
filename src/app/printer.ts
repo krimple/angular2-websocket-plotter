@@ -19,7 +19,7 @@ export class Printer implements OnInit {
   @Input() id: string;
   @Input() width: number;
   @Input() height: number;
-  @Input() incomingData$: ReplaySubject<string>;
+  @Input() incomingData: ReplaySubject<string>;
   data: Array<number>;
   static MAX_DATA: number = 10;
 
@@ -28,7 +28,7 @@ export class Printer implements OnInit {
   }
 
   ngOnInit() {
-    this.incomingData$.subscribe(
+    this.incomingData.subscribe(
         (dataPoint) => {
             this.data.push(JSON.parse(dataPoint).value);
             if (this.data.length > 10) {
